@@ -1,0 +1,98 @@
+
+   .social-media {
+    margin-top: 60px;
+    text-align: center; 
+}
+
+
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin: 15px;
+    border-radius: 50%;
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+    background-color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+}
+
+
+.icon-button.github {
+    background-color: #24292e;
+}
+
+.icon-button.linkedin {
+    background-color: #0077b5;
+}
+
+.icon-button.google {
+    background: linear-gradient(#4285f4, #34a853, #fbbc05, #ea4335);
+    color: #fff;
+}
+
+.icon-button.phone {
+    background-color: #24292e;
+}
+
+.icon-button.instagram {
+    background: radial-gradient(circle at 30% 30%, #fdc468, #df4996, #d91a46);
+}
+
+
+.icon-button:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.icon-button img {
+    transition: transform 0.6s ease;
+}
+
+.icon-button:hover img {
+    transform: rotate(15deg);
+}
+
+
+
+
+@media (max-width: 1024px) {
+    .icon-button {
+        width: 45px;
+        height: 45px;
+        font-size: 26px;
+        margin: 10px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .social-media {
+        text-align: center;
+        margin-top: 40px;
+    }
+    .icon-button {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        margin: 8px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .social-media {
+        margin-top: 30px;
+    }
+    .icon-button {
+        width: 35px;
+        height: 35px;
+        font-size: 22px;
+        margin: 6px;
+    }
+}

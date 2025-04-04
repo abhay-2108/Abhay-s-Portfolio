@@ -1,0 +1,251 @@
+.about-section {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+}
+
+.title {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+}
+
+.about {
+    font-size: 2rem;
+    color: #2d7cf3;
+    margin-bottom: 10px;
+    margin-top: 60px;
+}
+
+
+.I {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 300;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.profile {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18vw;
+    height: 45vh; 
+    margin-right: 50px; 
+    margin-left: 450px; 
+}
+
+.profile img {
+    width: 16vw;
+    height: 40vh;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.profile img:hover {
+    transform: scale(1.1) rotate(4deg); 
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+}
+
+
+.content {
+    margin-top: 60px;
+    max-width: 600px;
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: justify;
+    padding: 0 20px;
+}
+
+
+.cv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 100;
+    font-size: 100%;
+    border: 2px solid #2d7cf3;
+    background-color: #2d7cf3;
+    color: white;
+    box-shadow: 0px 2px 4px rgba(45, 124, 243, 0.1);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width: 170px;
+}
+
+.cv:hover {
+    border: 2px solid #2d7cf3;
+    background: white;
+    color:#2d7cf3;
+}
+
+
+@media (max-width: 1330px) {
+    .about-section {
+        margin-top: 10%;
+        padding: 60px 40px;
+        height: auto;
+    }
+
+    .main-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .profile {
+        width: 35vw;
+        max-width: 400px;
+        height: auto;
+        margin: 0;
+    }
+
+    .profile img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .content {
+        max-width: 50%;
+        font-size: 1.2rem;
+        text-align: justify;
+    }
+
+    .cv {
+        width: 180px;
+        font-size: 1rem;
+        padding: 12px;
+        margin-top: 20px;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .about-section {
+        padding: 40px 20px;
+        height: auto;
+    }
+
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .profile {
+        width: 50vw;
+        max-width: 350px;
+    }
+
+    .content {
+        max-width: 80%;
+        font-size: 1.1rem;
+    }
+
+    .cv {
+        width: 170px;
+        font-size: 1rem;
+        padding: 10px;
+        margin: 20px auto;
+        margin-left: 30vw;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 30px 10px;
+        text-align: center;
+    }
+
+    .title {
+        margin-top: 3vh;
+    }
+
+    .about {
+        font-size: 1.9rem;
+    }
+
+    .I {
+        font-size: 0.9rem;
+    }
+
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile {
+        width: 60vw;
+        max-width: 280px;
+    }
+
+    .content {
+        font-size: 1rem;
+        max-width: 90%;
+        text-align: justify;
+    }
+
+    .cv {
+        width: 150px;
+        font-size: 0.9rem;
+        padding: 8px;
+        margin: 20px auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .about-section {
+        padding: 20px 5px;
+    }
+
+    .about {
+        font-size: 1.5rem;
+    }
+
+    .I {
+        font-size: 1rem;
+    }
+
+    .profile {
+        width: 80vw;
+        max-width: 250px;
+    }
+
+    .content {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        max-width: 95%;
+    }
+
+    .cv {
+        width: 130px;
+        font-size: 0.8rem;
+        padding: 6px;
+        margin: 30px auto;
+    }
+}
