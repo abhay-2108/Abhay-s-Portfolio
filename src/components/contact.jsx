@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import "../styles/contact.css";
 import SocialMedia from "./SocialMedia";
 
@@ -30,68 +31,67 @@ const WaveField = ({ label, name, type = "text", value, onChange, required = fal
   );
 };
 
-const RippleButton = ({ children, onClick, type = "button" }) => {
+const RippleButton = ({ children, onClick, type = "button", disabled = false }) => {
   return (
-    <button className="ripple-button" type={type} onClick={onClick}>
+    <button className="ripple-button" type={type} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );
 };
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required.";
-    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    if (!name.trim()) newErrors.name = "Name is required.";
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       newErrors.email = "Enter a valid email address.";
     }
-    if (!formData.subject.trim()) newErrors.subject = "Subject is required.";
-    if (!formData.message.trim()) newErrors.message = "Message cannot be empty.";
+    if (!message.trim()) newErrors.message = "Message cannot be empty.";
     return newErrors;
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
-    
-    setLoading(true);
-    try {
-      const response = await fetch("http://localhost:5000/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
 
-      const result = await response.json();
-      if (result.success) {
-        alert("Message sent successfully!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+    setLoading(true);
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      to_name: "Abhay Tiwari",
+      message: message,
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log("Email sent successfully!", response);
+        alert("Your message has been sent successfully! I'll get back to you as soon as possible.");
+        setName("");
+        setEmail("");
+        setMessage("");
         setErrors({});
-      } else {
-        alert("An error occurred: " + result.message);
-      }
-    } catch (error) {
-      alert("Failed to send message. Please try again later.");
-    }
-    setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+        alert("Failed to send message. Please try again later.");
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -111,8 +111,8 @@ const Contact = () => {
               <WaveField
                 label="Name"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
                 error={errors.name}
               />
@@ -120,26 +120,19 @@ const Contact = () => {
                 label="Email"
                 name="email"
                 type="email"
-                value={formData.email}
-                onChange={handleChange}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 error={errors.email}
               />
             </div>
-            <WaveField
-              label="Subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-              error={errors.subject}
-            />
+            
             <WaveField
               label="Message"
               name="message"
               multiline
-              value={formData.message}
-              onChange={handleChange}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               required
               error={errors.message}
             />
