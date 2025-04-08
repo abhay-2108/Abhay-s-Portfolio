@@ -20,7 +20,7 @@ A personal portfolio website built using **React.js + Vite**, showcasing my skil
 
 1. **Clone the repository**
    ```sh
-   git clone https://github.com/abhay-2108/Abhay-s-Portfolio.git
+   git clone https://github.com/abhay-2108/Abhay-Portfolio.git
    cd Portfolio-Website
    ```
 
