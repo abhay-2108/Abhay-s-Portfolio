@@ -8,6 +8,7 @@ A personal portfolio website built using **React.js + Vite**, showcasing my skil
 ✅ Fully responsive design  
 ✅ Optimized for performance and SEO   
 ✅ Dynamic project showcase  
+✅ Contact easily with direct message
 
 ---
 
